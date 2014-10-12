@@ -24,28 +24,45 @@ javascript:(
 				$("[id$='" + suffix + "']")	.each(function(){
 					var elem = this;
 					if(elem != undefined){
+						var ducking = "FKING";
 						var elem_text = $(elem).text();
 						var new_elem_text = elem_text.replace("&", " & ");	
-						console.log("elem text: " + new_elem_text);
 						var don_arr = duck_or_not(new_elem_text);
-						var don_str = don_arr.join(" ");
+						var clean_don_arr = clean_up_ducks(don_arr, ducking);
+						var don_str = clean_don_arr.join(" ");
 						console.log(elem_text +  " ..... " + don_str );
 						$(elem).text(don_str);
-					}
-					else{
-						console.log("pls no");
 					}
 				});
 			})();
 		}
 
+		function fuck_empty_strings(arr){
+			var i;
+			var dumb_ret = [];
+			for(i = 0; i < arr.length; i++){
+				if(arr[i] != ""){
+					dumb_ret.push(arr[i]);
+				}
+			}
+			return dumb_ret;
+		}
+
 		function clean_up_ducks(sent_arr, ducking){
-			
+			var i;
+			for(i = 2; i < sent_arr.length; i++){
+					if(sent_arr[i-2] == ducking && sent_arr[i] == ducking){
+						console.log(sent_arr);
+						sent_arr[i] = "";
+					}
+			}
+			return sent_arr;
 		}
 		
 		function duck_or_not(sent){
 			var ducking = "FKING";
-			var sent_arr = sent.split(" ");
+			var old_sent_arr = sent.split(" ");
+			var sent_arr = fuck_empty_strings(old_sent_arr);
 			var duck_ignores = ['IN', 'A', 'THE', 'OF', 'TO', 'AND', 'OR', '&'];
 			var duck_arr = number_the_words(sent, duck_ignores);
 			var ret_arr = [];
@@ -53,7 +70,6 @@ javascript:(
 			var i;
 			if(sent_arr.length == 2){
 				console.log("oh yeah" + sent_arr[0]);
-
 				return [sent_arr[0], ducking, sent_arr[1]];
 			}
 			for(i = 1; i < sent_arr.length; i++){
@@ -72,7 +88,8 @@ javascript:(
 		}
 
 		function number_the_words(sent, ignore_words){
-			var sent_arr = sent.split(" ");
+			var old_sent_arr = sent.split(" ");
+			var sent_arr = fuck_empty_strings(old_sent_arr);
 			var ret_arr = [];
 			var i, j;
 			for(i =0 ; i < sent_arr.length; i++){
