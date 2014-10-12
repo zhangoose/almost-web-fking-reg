@@ -21,6 +21,9 @@ javascript:(
 			(window.myBookmarklet = function() {
 				console.log("wut");
 				var suffix = "courseTitleAndCredits\\.courseTitle";
+
+				$("#iframe2").attr("src","http://sis.rutgers.edu/soc/?iframe=true&amp;term=92014");
+				console.log($("#iframe2").contents().find("[id$='" + suffix + "']").contents());
 				$("[id$='" + suffix + "']")	.each(function(){
 					var elem = this;
 					if(elem != undefined){
@@ -33,6 +36,7 @@ javascript:(
 						console.log(elem_text +  " ..... " + don_str );
 						$(elem).text(don_str);
 					}
+
 				});
 			})();
 		}
