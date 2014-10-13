@@ -19,7 +19,6 @@ javascript:(
 
 		function initMyBookmarklet() {
 			(window.myBookmarklet = function() {
-				console.log("wut");
 				var suffix = "courseTitleAndCredits\\.courseTitle";
 
 				$("#iframe2").attr("src","http://sis.rutgers.edu/soc/?iframe=true&amp;term=92014");
@@ -33,7 +32,6 @@ javascript:(
 						var don_arr = duck_or_not(new_elem_text);
 						var clean_don_arr = clean_up_ducks(don_arr, ducking);
 						var don_str = clean_don_arr.join(" ");
-						console.log(elem_text +  " ..... " + don_str );
 						$(elem).text(don_str);
 					}
 
@@ -56,7 +54,6 @@ javascript:(
 			var i;
 			for(i = 2; i < sent_arr.length; i++){
 					if(sent_arr[i-2] == ducking && sent_arr[i] == ducking){
-						console.log(sent_arr);
 						sent_arr[i] = "";
 					}
 			}
@@ -73,7 +70,6 @@ javascript:(
 			ret_arr.push(sent_arr[0]);
 			var i;
 			if(sent_arr.length == 2){
-				console.log("oh yeah" + sent_arr[0]);
 				return [sent_arr[0], ducking, sent_arr[1]];
 			}
 			for(i = 1; i < sent_arr.length; i++){

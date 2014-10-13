@@ -5,8 +5,6 @@ almost-web-fking-reg
 
 seriously should not have taken me as long as I did 
 
-~~pls work in webreg, only tested in sis atm~~
+fuck you https webreg, only works on http://sis.rutgers.edu/soc/
 
-fuck you https webreg, only works on sis.rutgers.edu
-
-hackru fall '14
+hackru fall '14: best rutgers theme hack
